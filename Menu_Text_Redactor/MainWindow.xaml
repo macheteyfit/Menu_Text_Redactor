@@ -1,0 +1,53 @@
+﻿<Window x:Class="Menu_Text_Redactor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Menu_Text_Redactor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="New" x:Name="menuItemNew"/>
+                    <MenuItem Header="Open" x:Name="menuItemOpen"/>
+                    <MenuItem Header="Save" x:Name="menuItemSave"/>
+                    <Separator/>
+                    <MenuItem Header="Exit" x:Name="menuItemExit"/>
+                </MenuItem>
+                <MenuItem Header="Edit" StaysOpenOnClick="True">
+                    <MenuItem Header="Cut"
+                              Command="Cut"/>
+                    <MenuItem Header="Copy"
+                              Command="Copy"/>
+                    <MenuItem Header="Paste"
+                              Command="Paste"/>
+                    <MenuItem Header="Undo"
+                              Command="Undo"/>
+                    <MenuItem Header="Redo"
+                              Command="Redo"/>
+                </MenuItem>
+                <MenuItem Header="Insert"/>
+                <MenuItem Header="Design"/>
+                <TextBox x:Name="TextBoxFontSize"
+                        Width="40"
+                        Text="{Binding ElementName=mainTextBox,
+                                       Path=FontSize,
+                                       Mode=TwoWay,
+                                       UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+            </Menu>
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock Text="Ch 37"/>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock x:Name="textBlockLines" Text="Ln 0"/>
+                </StatusBarItem>
+                <Separator/>
+            </StatusBar>
+            <TextBox x:Name="mainTextBox" AcceptsReturn="True" Padding="10" TextWrapping="Wrap"/>
+        </DockPanel>
+    </Grid>
+</Window>
